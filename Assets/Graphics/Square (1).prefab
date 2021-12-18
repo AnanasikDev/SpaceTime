@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2804780197816119281}
   - component: {fileID: 4267293296307670102}
   - component: {fileID: 3220846271795685508}
+  - component: {fileID: -799680829607107512}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Door
@@ -125,7 +126,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0.0005612336, y: -0.0040749907}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -136,5 +137,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.06009987, y: 0.21817583}
   m_EdgeRadius: 0
+--- !u!114 &-799680829607107512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2451163536761704273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777fdd2dd1630dc4da1e223df60f0faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0

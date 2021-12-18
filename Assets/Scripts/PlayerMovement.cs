@@ -5,7 +5,7 @@ public sealed class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float Speed = 1f;
     [SerializeField, Tooltip("Debug value")] private Vector2 _Input;
-    private Rigidbody2D _Rigidbody2D;
+    public Rigidbody2D _Rigidbody2D { get; private set; }
     public bool UseMotor = true;
 
     public static PlayerMovement instance { get; private set; }
@@ -32,6 +32,13 @@ public sealed class PlayerMovement : MonoBehaviour
         }
 
         _Rigidbody2D.velocity = _Input * Speed;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent<Door>(out Door door))
+        {
+            door.Tp();
+        }
     }
 
     private void Update()
