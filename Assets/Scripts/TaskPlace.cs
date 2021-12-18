@@ -2,19 +2,12 @@ using UnityEngine;
 using System;
 public class TaskPlace : MonoBehaviour
 {
-    [SerializeField] private TaskType _TaskType;
-    [SerializeField, Tooltip("Debug Value")] protected Task _Task;
+    [SerializeField] protected Task _Task;
 
     [SerializeField] protected float ActiveDistance = 1f;
-
-    public void Init() => SelectTask();
-    private void SelectTask()
-    {
-        if (_TaskType == TaskType.Fuel) _Task = FuelTask.instance;
-    }
     private bool IsPlayerNere()
     {
-        return (transform.position - PlayerMovement.instance.transform.position).sqrMagnitude > ActiveDistance;
+        return (transform.position - PlayerMovement.instance.transform.position).sqrMagnitude <= ActiveDistance;
     }
     private void GetEnter()
     {

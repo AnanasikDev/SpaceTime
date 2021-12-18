@@ -25,7 +25,11 @@ public sealed class PlayerMovement : MonoBehaviour
     }
     private void UpdateMotor()
     {
-        if (!UseMotor) return;
+        if (!UseMotor)
+        {
+            _Rigidbody2D.velocity = Vector2.zero;
+            return;
+        }
 
         _Rigidbody2D.velocity = _Input * Speed;
     }
