@@ -16,15 +16,15 @@ public class SwitchTask : Task
             if (Settings[i][_] == '1')
                 Invert(_);
         }
+
+        int sum = 0;
+        foreach (int a in State) sum += a;
+        if (sum == 6) Pass();
     }
     private void Invert(int index)
     {
         State[index] = 1 - State[index];
         Switches[index].image.color = State[index] == 1 ? ColorEnabled : ColorDisabled;
-
-        int sum = 0;
-        foreach (int a in State) sum += a;
-        if (sum == 6) Pass();
     }
 
 
@@ -58,10 +58,16 @@ public class SwitchTask : Task
     {
         WindowPanel.SetActive(true);
         PlayerMovement.instance.UseMotor = false;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     public override void Close()
     {
         WindowPanel.SetActive(false);
         PlayerMovement.instance.UseMotor = true;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
