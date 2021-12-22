@@ -2,19 +2,28 @@ using UnityEngine;
 using System;
 public class TaskPlace : MonoBehaviour
 {
-    [SerializeField] protected Task _Task;
+    [SerializeField] private Task _Task;
 
-    [SerializeField] protected float ActiveDistance = 1f;
-    private bool IsPlayerNere()
+    [SerializeField] private float ActiveDistance = 1f;
+    [SerializeField] private bool IsPlayerNear = false;
+
+    [HideInInspector] public Action OnOpened;
+    //[SerializeField] private GameObject Prompt;
+    private bool GetIsPlayerNear()
     {
         return (transform.position - PlayerMovement.instance.transform.position).sqrMagnitude <= ActiveDistance;
     }
     private void GetEnter()
     {
+        IsPlayerNear = GetIsPlayerNear();
+
+        //Prompt.SetActive(IsPlayerNear);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (!IsPlayerNere()) return;
+            if (!IsPlayerNear) return;
 
+            OnOpened?.Invoke();
             _Task.Open();
         }
     }

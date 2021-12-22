@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class SwitchTask : Task
 {
     [SerializeField] private Button[] Switches;
@@ -8,6 +8,7 @@ public class SwitchTask : Task
     [SerializeField, Tooltip("Debug Value")] private int[] State;
     [SerializeField] private Color ColorEnabled;
     [SerializeField] private Color ColorDisabled;
+    [SerializeField] private float PassDelay = 1f;
 
     public void Switch(int i)
     {
@@ -44,8 +45,15 @@ public class SwitchTask : Task
 
     protected override void Pass()
     {
-        StatusImage.color = PassColor;
+        StartCoroutine(Wait());
+    }
+    private IEnumerator Wait()
+    {
         IsPassed = true;
+        AudioController.instance.Play(AudioController.instance.CorrectAnswer);
+        StatusImage.color = PassColor;
+        yield return new WaitForSeconds(PassDelay);
+
         Close();
     }
     protected override void Fail()
@@ -64,6 +72,8 @@ public class SwitchTask : Task
     }
     public override void Close()
     {
+        if (!IsPassed) Fail();
+
         WindowPanel.SetActive(false);
         PlayerMovement.instance.UseMotor = true;
 

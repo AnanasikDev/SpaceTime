@@ -5,6 +5,7 @@ public class Init : MonoBehaviour
     private void InitControllers()
     {
         FuelTask.instance = FindObjectOfType<FuelTask>();
+        AudioController.instance = FindObjectOfType<AudioController>();
     }
     private void InitPlaces()
     {

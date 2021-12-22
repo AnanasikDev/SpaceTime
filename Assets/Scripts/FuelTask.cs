@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class FuelTask : Task
 {
@@ -8,8 +9,9 @@ public class FuelTask : Task
 
     [SerializeField] private Transform Cursor;
     [SerializeField] private float CursorBounds = 164f;
-    [SerializeField] private float CursorSpeed = 1f;
+    [SerializeField] public float CursorSpeed = 1f;
     [Tooltip("Debug value")] public bool IsInsideGreenZone = true;
+    [SerializeField] private float PassDelay = 1f;
     private void MoveCursor()
     {
         if (!IsPassed)
@@ -18,7 +20,7 @@ public class FuelTask : Task
 
     private void Detect()
     {
-        if (GetInput())
+        if (IsOpened && GetInput())
         {
             if (IsInsideGreenZone)
             {
@@ -55,24 +57,36 @@ public class FuelTask : Task
 
     protected override void Pass()
     {
-        StatusImage.color = PassColor;
+        StartCoroutine(Wait());
+    }
+    private IEnumerator Wait()
+    {
         IsPassed = true;
+        StatusImage.color = PassColor;
+        
+        AudioController.instance.Play(AudioController.instance.CorrectAnswer);
+
+        yield return new WaitForSeconds(PassDelay);
+
         Close();
     }
 
     protected override void Fail()
     {
+        AudioController.instance.Play(AudioController.instance.WrongAnswer);
         StatusImage.color = FailColor;
         IsPassed = false;
     }
 
     public override void Open()
     {
+        IsOpened = true;
         WindowPanel.SetActive(true);
         PlayerMovement.instance.UseMotor = false;
     }
     public override void Close()
     {
+        IsOpened = false;
         WindowPanel.SetActive(false);
         PlayerMovement.instance.UseMotor = true;
     }
