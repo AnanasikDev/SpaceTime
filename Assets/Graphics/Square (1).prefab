@@ -155,3 +155,10 @@ MonoBehaviour:
   Direction: 0
   Distance: 1.6
   dir: {x: 0, y: 0, z: 0}
+  OpenableDoorSprite: {fileID: -699862423, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  NotOpenableDoorSprite: {fileID: -1730471098, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  DoorSprites:
+  - {fileID: -1730471098, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  - {fileID: -337421117, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  - {fileID: 1517966693, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  - {fileID: 1307504922, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}

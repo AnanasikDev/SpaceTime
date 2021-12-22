@@ -69,6 +69,8 @@ public class FuelTask : Task
         yield return new WaitForSeconds(PassDelay);
 
         Close();
+
+        DoorController.AddKey(Key);
     }
 
     protected override void Fail()

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FuelTaskPlace : TaskPlace
 {
+    [SerializeField] FuelTask _FuelTask;
     [SerializeField] private float Speed = 1.25f;
 
     private void Start()
@@ -10,6 +11,6 @@ public class FuelTaskPlace : TaskPlace
     }
     private void SetSpeed()
     {
-        FuelTask.instance.CursorSpeed = Speed;
+        _FuelTask.CursorSpeed = Speed;
     }
 }

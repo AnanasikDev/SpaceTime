@@ -8,6 +8,8 @@ public class TaskPlace : MonoBehaviour
     [SerializeField] private bool IsPlayerNear = false;
 
     [HideInInspector] public Action OnOpened;
+
+    [SerializeField] private int Key = 1;
     //[SerializeField] private GameObject Prompt;
     private bool GetIsPlayerNear()
     {
@@ -24,6 +26,7 @@ public class TaskPlace : MonoBehaviour
             if (!IsPlayerNear) return;
 
             OnOpened?.Invoke();
+            _Task.Key = Key;
             _Task.Open();
         }
     }

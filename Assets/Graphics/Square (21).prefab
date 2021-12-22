@@ -129,6 +129,13 @@ MonoBehaviour:
   Direction: 1
   Distance: 0.8
   dir: {x: 0, y: 0, z: 0}
+  OpenableDoorSprite: {fileID: -1887129240, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  NotOpenableDoorSprite: {fileID: 491477317, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  DoorSprites:
+  - {fileID: 491477317, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  - {fileID: -1487639905, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  - {fileID: 1245269387, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
+  - {fileID: -2065212670, guid: 0e69c8d0c7f812e4a893ce6ed6305253, type: 3}
 --- !u!61 &2762396447644965460
 BoxCollider2D:
   m_ObjectHideFlags: 0

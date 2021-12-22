@@ -10,6 +10,8 @@ public abstract class Task : MonoBehaviour
     [SerializeField] protected Color FailColor;
     [SerializeField, Tooltip("Debug Value")] protected bool IsPassed;
 
+    [Tooltip("Debug Value")] public int Key = 1;
+
     protected abstract void Pass();
     protected abstract void Fail();
     public abstract void Open();

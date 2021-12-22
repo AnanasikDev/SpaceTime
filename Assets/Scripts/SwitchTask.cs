@@ -10,7 +10,7 @@ public class SwitchTask : Task
     [SerializeField] private Color ColorEnabled;
     [SerializeField] private Color ColorDisabled;
     [SerializeField] private float PassDelay = 1f;
-    [SerializeField, Tooltip("DebugValue")] private int Capacity;
+    [SerializeField, Tooltip("Debug Value")] private int Capacity;
 
     public static SwitchTask instance;
     public void Switch(int i)
@@ -58,6 +58,8 @@ public class SwitchTask : Task
         yield return new WaitForSeconds(PassDelay);
 
         Close();
+
+        DoorController.AddKey(Key);
     }
     protected override void Fail()
     {
