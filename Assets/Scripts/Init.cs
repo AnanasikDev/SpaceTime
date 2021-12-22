@@ -6,6 +6,7 @@ public class Init : MonoBehaviour
     {
         FuelTask.instance = FindObjectOfType<FuelTask>();
         AudioController.instance = FindObjectOfType<AudioController>();
+        SwitchTask.instance = FindObjectOfType<SwitchTask>();
     }
     private void InitPlaces()
     {

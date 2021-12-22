@@ -3,16 +3,19 @@ using UnityEngine.UI;
 using System.Collections;
 public class SwitchTask : Task
 {
-    [SerializeField] private Button[] Switches;
-    [SerializeField] private string[] Settings; // Параметры переключения каждого свитча
-    [SerializeField, Tooltip("Debug Value")] private int[] State;
+    [HideInInspector] public GameObject SwitchesPanel;
+    [HideInInspector] public Button[] Switches;
+    [HideInInspector] public string[] Settings; // Параметры переключения каждого свитча
+    [HideInInspector] public int[] State;
     [SerializeField] private Color ColorEnabled;
     [SerializeField] private Color ColorDisabled;
     [SerializeField] private float PassDelay = 1f;
+    [SerializeField, Tooltip("DebugValue")] private int Capacity;
 
+    public static SwitchTask instance;
     public void Switch(int i)
     {
-        for(int _ = 0; _ < Switches.Length; _++)
+        for(int _ = 0; _ < Capacity; _++)
         {
             if (Settings[i][_] == '1')
                 Invert(_);
@@ -20,7 +23,7 @@ public class SwitchTask : Task
 
         int sum = 0;
         foreach (int a in State) sum += a;
-        if (sum == 6) Pass();
+        if (sum == Capacity) Pass();
     }
     private void Invert(int index)
     {
@@ -64,6 +67,8 @@ public class SwitchTask : Task
 
     public override void Open()
     {
+        Capacity = Switches.Length;
+        State = new int[Capacity];
         WindowPanel.SetActive(true);
         PlayerMovement.instance.UseMotor = false;
 
@@ -79,5 +84,10 @@ public class SwitchTask : Task
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void EnableSwitches(bool state)
+    {
+        if (SwitchesPanel) 
+            SwitchesPanel.SetActive(state);
     }
 }
