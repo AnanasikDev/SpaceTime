@@ -30,6 +30,7 @@ public class TaskPlace : MonoBehaviour
             _Task.Key = Key;
             _Task.IsPassed = IsCompleted;
             OnOpened?.Invoke();
+            _Task._TaskPlace = this;
             _Task.Open();
         }
     }
@@ -47,6 +48,7 @@ public class TaskPlace : MonoBehaviour
         }
         catch { }
     }
+    public void Complete() => IsCompleted = true;
     public enum TaskType {
         Fuel
     }

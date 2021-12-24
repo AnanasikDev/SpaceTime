@@ -8,11 +8,10 @@ public class FuelTaskPlace : TaskPlace
     private void Start()
     {
         OnOpened += SetSpeed;
-        _FuelTask.OnCompleted += Complete;
     }
     private void SetSpeed()
     {
+        _FuelTask.IsPassed = IsCompleted;
         _FuelTask.CursorSpeed = Speed;
     }
-    private void Complete() => IsCompleted = true;
 }

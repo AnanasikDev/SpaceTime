@@ -67,6 +67,8 @@ public class FuelTask : Task
         
         AudioController.instance.Play(AudioController.instance.CorrectAnswer);
 
+        _TaskPlace.Complete();
+
         yield return new WaitForSeconds(PassDelay);
 
         Close();
@@ -83,8 +85,6 @@ public class FuelTask : Task
 
     public override void Open()
     {
-        OnCompleted?.Invoke();
-
         IsOpened = true;
         WindowPanel.SetActive(true);
         PlayerMovement.instance.UseMotor = false;

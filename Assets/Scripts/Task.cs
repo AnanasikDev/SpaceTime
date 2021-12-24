@@ -6,6 +6,8 @@ public abstract class Task : MonoBehaviour
     [SerializeField] protected GameObject WindowPanel;
     [SerializeField, Tooltip("Debug Value")] protected bool IsOpened = false;
 
+    public TaskPlace _TaskPlace;
+
     [SerializeField] protected Image StatusImage;
     [SerializeField] protected Color PassColor;
     [SerializeField] protected Color FailColor;

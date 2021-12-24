@@ -8373,7 +8373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &751472216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9470,7 +9470,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865303661}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 48f3bb4a3191f3c4b98321fa53bf0ca4, type: 3}
@@ -11669,7 +11669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1117253573
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19082,6 +19082,7 @@ MonoBehaviour:
   ActiveDistance: 0.7
   IsPlayerNear: 0
   Key: 1
+  IsCompleted: 0
   _FuelTask: {fileID: 207022953}
   Speed: 1.75
 --- !u!4 &1943235118 stripped
@@ -20381,6 +20382,7 @@ MonoBehaviour:
   ActiveDistance: 0.7
   IsPlayerNear: 0
   Key: 3
+  IsCompleted: 0
   SwitchesPanel: {fileID: 1633740994}
   Switches:
   - {fileID: 1511492643}
