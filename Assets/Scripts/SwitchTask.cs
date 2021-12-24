@@ -52,14 +52,14 @@ public class SwitchTask : Task
     }
 
 
-    protected override void Pass()
+    protected override void Pass(bool playSound = true)
     {
-        StartCoroutine(Wait());
+        StartCoroutine(Wait(playSound));
     }
-    private IEnumerator Wait()
+    private IEnumerator Wait(bool playSound)
     {
         IsPassed = true;
-        AudioController.instance.Play(AudioController.instance.CorrectAnswer);
+        if (playSound) AudioController.instance.Play(AudioController.instance.CorrectAnswer);
         StatusImage.color = PassColor;
         yield return new WaitForSeconds(PassDelay);
 
@@ -67,7 +67,7 @@ public class SwitchTask : Task
 
         DoorController.AddKey(Key);
     }
-    protected override void Fail()
+    protected override void Fail(bool playSound = false)
     {
         StatusImage.color = FailColor;
         IsPassed = false;

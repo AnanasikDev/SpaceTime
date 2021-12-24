@@ -17,8 +17,8 @@ public abstract class Task : MonoBehaviour
 
     public Action OnCompleted;
 
-    protected abstract void Pass();
-    protected abstract void Fail();
+    protected abstract void Pass(bool playSound = true);
+    protected abstract void Fail(bool playSound = true);
     public abstract void Open();
     public abstract void Close();
 }
