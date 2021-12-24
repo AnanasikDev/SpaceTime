@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Linq;
 public class SwitchTask : Task
 {
     [HideInInspector] public GameObject SwitchesPanel;
@@ -13,6 +14,11 @@ public class SwitchTask : Task
     [SerializeField, Tooltip("Debug Value")] private int Capacity;
 
     public static SwitchTask instance;
+    private void Start()
+    {
+        Capacity = Switches.Length;
+        State = new int[Capacity];
+    }
     public void Switch(int i)
     {
         for(int _ = 0; _ < Capacity; _++)
@@ -70,7 +76,16 @@ public class SwitchTask : Task
     public override void Open()
     {
         Capacity = Switches.Length;
-        State = new int[Capacity];
+
+        if (!IsPassed)
+        {
+            foreach (Button btn in Switches)
+            {
+                btn.GetComponent<Image>().color = ColorDisabled;
+            }
+            State = new int[Capacity];
+        }
+
         WindowPanel.SetActive(true);
         PlayerMovement.instance.UseMotor = false;
 

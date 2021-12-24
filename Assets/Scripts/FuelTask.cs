@@ -14,8 +14,9 @@ public class FuelTask : Task
     [SerializeField] private float PassDelay = 1f;
     private void MoveCursor()
     {
-        if (!IsPassed)
-            Cursor.transform.localPosition = new Vector2(Cursor.transform.localPosition.x, Mathf.Sin(Time.time * CursorSpeed) * CursorBounds);
+        if (IsPassed) return;
+        
+        Cursor.transform.localPosition = new Vector2(Cursor.transform.localPosition.x, Mathf.Sin(Time.time * CursorSpeed) * CursorBounds);
     }
 
     private void Detect()
@@ -82,6 +83,8 @@ public class FuelTask : Task
 
     public override void Open()
     {
+        OnCompleted?.Invoke();
+
         IsOpened = true;
         WindowPanel.SetActive(true);
         PlayerMovement.instance.UseMotor = false;

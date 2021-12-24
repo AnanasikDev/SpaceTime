@@ -10,6 +10,7 @@ public class SwitchTaskPlace : TaskPlace
     private void Start()
     {
         OnOpened += SetParams;
+        State = new int[Switches.Length];
     }
     private void SetParams()
     {

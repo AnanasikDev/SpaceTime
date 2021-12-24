@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 public abstract class Task : MonoBehaviour
 {
     [SerializeField] protected GameObject WindowPanel;
@@ -8,9 +9,11 @@ public abstract class Task : MonoBehaviour
     [SerializeField] protected Image StatusImage;
     [SerializeField] protected Color PassColor;
     [SerializeField] protected Color FailColor;
-    [SerializeField, Tooltip("Debug Value")] protected bool IsPassed;
+    [Tooltip("Debug Value")] public bool IsPassed;
 
     [Tooltip("Debug Value")] public int Key = 1;
+
+    public Action OnCompleted;
 
     protected abstract void Pass();
     protected abstract void Fail();

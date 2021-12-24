@@ -11,16 +11,11 @@ public class Monster : MonoBehaviour
     [SerializeField, Tooltip("Debug Value")] float i;
     [SerializeField, Tooltip("Debug Value")] float Current;
 
-    private void Start()
-    {
-        Stress = Stress / 100f;
-    }
     private void Update()
     {
-        i = StressCurve.Evaluate(Time.realtimeSinceStartup);
-        float max = 200f;
-        Current = Random.Range(0, i * max);
-        if (Current > max - Stress)
+        i = StressCurve.Evaluate(Time.realtimeSinceStartup * 2);
+        Current = Random.Range(0, i);
+        if (Current > Stress)   
         {
             Activate();
         }
@@ -28,6 +23,9 @@ public class Monster : MonoBehaviour
     private void Activate()
     {
         if (!IsRelaxed) return;
+
+        AudioController.instance.Play(AudioController.instance.Screamer, 1.4f);
+        AudioController.instance.Play(AudioController.instance.HeartBeating, 1.1f);
 
         _Animator.SetTrigger("light");
         StartCoroutine("Wait");

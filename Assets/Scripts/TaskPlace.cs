@@ -10,6 +10,8 @@ public class TaskPlace : MonoBehaviour
     [HideInInspector] public Action OnOpened;
 
     [SerializeField] private int Key = 1;
+
+    public bool IsCompleted = false;
     //[SerializeField] private GameObject Prompt;
     private bool GetIsPlayerNear()
     {
@@ -25,8 +27,9 @@ public class TaskPlace : MonoBehaviour
         {
             if (!IsPlayerNear) return;
 
-            OnOpened?.Invoke();
             _Task.Key = Key;
+            _Task.IsPassed = IsCompleted;
+            OnOpened?.Invoke();
             _Task.Open();
         }
     }
